@@ -1,5 +1,6 @@
 package ee.bitweb.banklink.sdk.banks.swedbank;
 
+import ee.bitweb.banklink.sdk.ConfigurationParameters;
 import ee.bitweb.banklink.sdk.protocol.FieldDefinition;
 import ee.bitweb.banklink.sdk.protocol.iPizza.Fields;
 import ee.bitweb.banklink.sdk.Banklink;
@@ -17,14 +18,21 @@ public class Swedbank extends Banklink {
     public Swedbank(Protocol protocol) {
         super(protocol);
         super.requestUri = "https://www.swedbank.ee/banklink";
-        super.testRequestUri = "https://pangalink.bitweb.ee/banklink/swedbank";
+        super.testRequestUri = this.getConfigurationParameters().getBaseTestUrl() + "/swedbank";
         super.fields = new Fields();
     }
 
     public Swedbank(Protocol protocol, String encoding, String language, String currency) {
         super(protocol, encoding, language, currency);
         super.requestUri = "https://www.swedbank.ee/banklink";
-        super.testRequestUri = "https://pangalink.bitweb.ee/banklink/swedbank";
+        super.testRequestUri = this.getConfigurationParameters().getBaseTestUrl() + "/swedbank";
+        super.fields = new Fields();
+    }
+
+    public Swedbank(Protocol protocol, ConfigurationParameters configurationParameters) {
+        super(protocol, configurationParameters);
+        super.requestUri = "https://www.swedbank.ee/banklink";
+        super.testRequestUri = configurationParameters.getBaseTestUrl() + "/swedbank";
         super.fields = new Fields();
     }
 

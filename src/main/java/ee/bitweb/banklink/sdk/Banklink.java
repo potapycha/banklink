@@ -20,6 +20,7 @@ import java.util.Map;
  * Created by tobre on 18/03/2017.
  */
 public abstract class Banklink {
+    private ConfigurationParameters configurationParameters;
 
     protected Protocol protocol;
 
@@ -35,6 +36,7 @@ public abstract class Banklink {
     private Log logger = LogFactory.getLog(Banklink.class);
 
     public Banklink(Protocol protocol) {
+        this.configurationParameters = new ConfigurationParameters();
         this.protocol = protocol;
     }
 
@@ -43,6 +45,19 @@ public abstract class Banklink {
         this.encoding = encoding;
         this.language = language;
         this.currency = currency;
+    }
+
+    public Banklink (Protocol protocol, ConfigurationParameters configurationParameters) {
+        this(protocol);
+        this.configurationParameters = configurationParameters;
+        this.testRequestUri = configurationParameters.getBaseTestUrl();
+        this.encoding = configurationParameters.getEncoding();
+        this.language = configurationParameters.getLanguage();
+        this.currency = configurationParameters.getCurrency();
+    }
+
+    public ConfigurationParameters getConfigurationParameters() {
+        return configurationParameters;
     }
 
     public String getPaymentRequestURI() {
