@@ -1,5 +1,6 @@
 package ee.bitweb.banklink.sdk.banks.seb;
 
+import ee.bitweb.banklink.sdk.ConfigurationParameters;
 import ee.bitweb.banklink.sdk.protocol.FieldDefinition;
 import ee.bitweb.banklink.sdk.protocol.iPizza.Fields;
 import ee.bitweb.banklink.sdk.Banklink;
@@ -17,14 +18,21 @@ public class Seb extends Banklink {
     public Seb(Protocol protocol) {
         super(protocol);
         super.requestUri = "https://www.seb.ee/cgi-bin/unet3.sh/un3min.r";
-        super.testRequestUri = "https://pangalink.bitweb.ee/banklink/seb";
+        super.testRequestUri = this.getConfigurationParameters().getBaseTestUrl() + "/seb";
         super.fields = new Fields();
     }
 
     public Seb(Protocol protocol, String encoding, String language, String currency) {
         super(protocol, encoding, language, currency);
         super.requestUri = "https://www.seb.ee/cgi-bin/unet3.sh/un3min.r";
-        super.testRequestUri = "https://pangalink.bitweb.ee/banklink/seb";
+        super.testRequestUri = this.getConfigurationParameters().getBaseTestUrl() + "/seb";
+        super.fields = new Fields();
+    }
+
+    public Seb(Protocol protocol, ConfigurationParameters configurationParameters) {
+        super(protocol, configurationParameters);
+        super.requestUri = "https://www.seb.ee/cgi-bin/unet3.sh/un3min.r";
+        super.testRequestUri = configurationParameters.getBaseTestUrl() + "/seb";
         super.fields = new Fields();
     }
 
