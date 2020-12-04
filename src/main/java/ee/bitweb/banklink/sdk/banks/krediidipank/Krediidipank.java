@@ -7,9 +7,6 @@ import ee.bitweb.banklink.sdk.protocol.Protocol;
 
 import java.util.Map;
 
-/**
- * Created by tobre on 18/03/2017.
- */
 public class Krediidipank extends Banklink {
 
     private static final String BANKID = "KREP";

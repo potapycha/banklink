@@ -12,9 +12,6 @@ import org.junit.Test;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-/**
- * Created by tobre on 20/03/2017.
- */
 public class NordeaTest extends BankLinkTestStub {
 
     @Before
